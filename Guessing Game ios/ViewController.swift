@@ -20,6 +20,7 @@ class ViewController: UIViewController {
        GuessesLeftLabel.text = "\(guesses) guesses remaining"
     }
     
+    let randomNumber = Int.random(in: 1...100)
     var guesses = 5
     
     override func viewDidLoad() {
