@@ -11,27 +11,21 @@ import UIKit
 class SelectDifficultyViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let selectDifficultyViewController = segue.destination as? SelectDifficultyViewController else
+        guard let viewController = segue.destination as? ViewController else
         { return }
         
         switch segue.identifier {
         case "EasyToGuessingGame":
-            //Min 1
             //Max 50
-            //Number guesses 5
+            viewController.maximum = 50
             
-            break
         case "MediumToGuessingGame":
-            //Min 1
-            //Max 100
-            //Number guesses 5
-            break
+           //Max 100
+            viewController.maximum = 100
+          
         case "HardToGuessingGame":
-            //Min 1
-            //Max 500
-            //Number guesses 5
-            
-            break
+           //Max 500
+            viewController.maximum = 500
             
         default:
             break

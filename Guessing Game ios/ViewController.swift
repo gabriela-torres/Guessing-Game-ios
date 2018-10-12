@@ -16,30 +16,58 @@ class ViewController: UIViewController {
     @IBOutlet weak var FeedbackLabel: UILabel!
     @IBOutlet weak var GuessesLeftLabel: UILabel!
     @IBOutlet weak var PlayAgainButton: UIButton!
-    
-    //MARK: UI Actions
-    @IBAction func GuessButtonTapped(_ sender: Any) {
-        let userInput = GuessTextField.text!
-        makeAGuess(guess: Int(userInput)!)
-        GuessesLeftLabel.text = "You have \(guessesLeft) guesses left."
-        guard let guess = Int(userInput) else {
-            FeedbackLabel.text = "You didn’t give me a number..."
+    @IBOutlet weak var InstructionsLabel: UILabel!
+   
+    //MARK: Functions
+    func makeAGuess(guess: Int) {
+        guessesLeft -= 1
+        guard guess >= minimum && guess <= maximum else {
+            FeedbackLabel.text = "Your number wasn't betweeen \(minimum) and \(maximum)."
             return
+        }
+        
+        if guess == randomNumber {
+            FeedbackLabel.text = "You won!"
+            setupUIForRestart()
+        } else if guessesLeft == 0 {
+            FeedbackLabel.text = "You lost! The correct number is \(randomNumber)"
+            setupUIForRestart()
+            return
+        }
+        
+        if guess < randomNumber {
+            
+            FeedbackLabel.text = "Guess Higher..."
+        } else {
+            FeedbackLabel.text = "Guess Lower..."
+            
+            GuessesLeftLabel.text = "You have \(guessesLeft) guesses left."
         }
     }
     
-    //MARK: Lifestyles
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
+    //MARK: UI Actions
+    @IBAction func playAgainButtonTapped(_ sender: Any) {
+        restart()
     }
-    
+    //MARK: Properties
+    var minimum = 1
+    var maximum = 100
+    var guessesLeft = 5
+    var randomNumber = 0
     
     //MARK: Functions
+    func setupUIForRestart() {
+        //Display Input
+        GuessTextField.isEnabled = false
+        //Hide Guess Button
+        GuessButton.isHidden = true
+        //Unhide Play Again Button
+        PlayAgainButton.isHidden = false
+    }
+    
     func restart() {
         //New random number.
-        randomNumber = Int.random(in: minimum...maximum)
+        randomNumber = Int.random(in: minimum ... maximum)
         
         
         //Reset guesses remaining.
@@ -63,51 +91,25 @@ class ViewController: UIViewController {
         //Reset guesses remaining label.
         GuessesLeftLabel.text = "You have \(guessesLeft) guesses left."
     }
-    func setupUIForRestart() {
-        //Display Input
-        GuessTextField.isEnabled = false
-        //Hide Guess Button
-        GuessButton.isHidden = true
-        //Unhide Play Again Button
-        PlayAgainButton.isHidden = false
-    }
-    func makeAGuess(guess: Int) {
-        guessesLeft -= 1
-        guard guess >= minimum && guess <= maximum else {
-            FeedbackLabel.text = "Your number wasn't betweeen \(minimum) and \(maximum)."
+   
+    //MARK: UI Actions
+    @IBAction func GuessButtonTapped(_ sender: Any) {
+        let userInput = GuessTextField.text!
+        
+        makeAGuess(guess: Int(userInput)!)
+        GuessesLeftLabel.text = "You have \(guessesLeft) guesses left."
+    guard let guess = Int(userInput) else {
+            FeedbackLabel.text = "You didn’t give me a number..."
             return
         }
-        
-        if guess == randomNumber {
-            FeedbackLabel.text = "You won!"
-            setupUIForRestart()
-        } else if guessesLeft == 0 {
-            FeedbackLabel.text = "You lost! The correct number is \(randomNumber)"
-            setupUIForRestart()
-            return
-        }
-        
-        
-        
-        
-        if guess < randomNumber {
-            
-            FeedbackLabel.text = "Guess Higher..."
-        } else {
-            FeedbackLabel.text = "Guess Lower..."
-            
-            GuessesLeftLabel.text = "You have \(guessesLeft) guesses left."
-        }
     }
     
-    @IBAction func playAgainButtonTapped(_ sender: Any) {
-        restart()
+    //MARK: Lifestyles
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        var randomNumber = Int.random(in: minimum ... maximum)
+        InstructionsLabel.text = "Please enter a number between \(minimum) and \(maximum)."
+        // Do any additional setup after loading the view, typically from a nib.
+        
     }
-    //MARK: Properties
-    var minimum = 1
-    var maximum = 100
-    
-    var randomNumber = Int.random(in: 1...100)
-    var guessesLeft = 5
-    
 }

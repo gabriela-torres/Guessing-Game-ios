@@ -66,6 +66,9 @@
                                         <state key="normal" title="Custom">
                                             <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="dhr-mt-3Sl" kind="show" id="gXO-5s-oVH"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -85,6 +88,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rPO-A4-kJB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1037" y="55"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="7i4-Cp-vBm">
+            <objects>
+                <viewController id="dhr-mt-3Sl" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LlD-Te-lar">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="YJ5-tG-Azm"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bce-Qh-m2j" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-111" y="389"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -127,7 +145,6 @@
                                         <rect key="frame" x="74" y="238" width="71" height="0.0"/>
                                         <state key="normal" title="Play Again"/>
                                         <connections>
-                                            <action selector="PlayAgainButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="C0J-Vq-yei"/>
                                             <action selector="playAgainButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kDb-gA-OJk"/>
                                         </connections>
                                     </button>
@@ -159,12 +176,13 @@
                         <outlet property="GuessButton" destination="Lui-4M-rdh" id="Z0N-az-SBv"/>
                         <outlet property="GuessTextField" destination="hoC-Ks-07K" id="DFr-ls-lr3"/>
                         <outlet property="GuessesLeftLabel" destination="3Ww-Yb-da2" id="MXM-Az-huv"/>
+                        <outlet property="InstructionsLabel" destination="g0Y-wM-xeU" id="HDv-cG-fyA"/>
                         <outlet property="PlayAgainButton" destination="60l-rS-50w" id="Xbi-u5-oGJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="62" y="54"/>
+            <point key="canvasLocation" x="-111" y="-295"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
