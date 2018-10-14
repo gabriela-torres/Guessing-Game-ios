@@ -17,7 +17,13 @@ class ViewController: UIViewController {
     @IBOutlet weak var GuessesLeftLabel: UILabel!
     @IBOutlet weak var PlayAgainButton: UIButton!
     @IBOutlet weak var InstructionsLabel: UILabel!
-   
+    
+    //MARK: Properties
+    var minimum = 1
+    var maximum = 100
+    var guessesLeft = 5
+    var randomNumber = 0
+    
     //MARK: Functions
     func makeAGuess(guess: Int) {
         guessesLeft -= 1
@@ -49,11 +55,16 @@ class ViewController: UIViewController {
     @IBAction func playAgainButtonTapped(_ sender: Any) {
         restart()
     }
-    //MARK: Properties
-    var minimum = 1
-    var maximum = 100
-    var guessesLeft = 5
-    var randomNumber = 0
+    @IBAction func GuessButtonTapped(_ sender: Any) {
+        let userInput = GuessTextField.text!
+        
+        makeAGuess(guess: Int(userInput)!)
+        GuessesLeftLabel.text = "You have \(guessesLeft) guesses left."
+        guard let guess = Int(userInput) else {
+            FeedbackLabel.text = "You didn’t give me a number..."
+            return
+        }
+    }
     
     //MARK: Functions
     func setupUIForRestart() {
@@ -91,18 +102,7 @@ class ViewController: UIViewController {
         //Reset guesses remaining label.
         GuessesLeftLabel.text = "You have \(guessesLeft) guesses left."
     }
-   
-    //MARK: UI Actions
-    @IBAction func GuessButtonTapped(_ sender: Any) {
-        let userInput = GuessTextField.text!
-        
-        makeAGuess(guess: Int(userInput)!)
-        GuessesLeftLabel.text = "You have \(guessesLeft) guesses left."
-    guard let guess = Int(userInput) else {
-            FeedbackLabel.text = "You didn’t give me a number..."
-            return
-        }
-    }
+
     
     //MARK: Lifestyles
     override func viewDidLoad() {
