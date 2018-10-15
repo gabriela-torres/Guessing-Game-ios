@@ -13,11 +13,11 @@ class CustomViewController: UIViewController {
     //UI Outlets
     @IBOutlet weak var NumberOfGuessesTextField: UITextField!
     @IBOutlet weak var MaximumNumberTextField: UITextField!
-    
     @IBOutlet weak var CustomizeButton: UIButton!
+    
     //UI Action
     @IBAction func CustomizeButtonTapped(_ sender: Any) {
-        performSegue(withIdentifier: "Custom", sender: sender)
+        performSegue(withIdentifier: "CustomizeToGuessingGame", sender: sender)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -25,7 +25,8 @@ class CustomViewController: UIViewController {
         { return }
         
         switch segue.identifier {
-        case "Customize":
+        case "CustomizeToGuessingGame":
+            viewController.minimum = 1
             viewController.maximum = (Int(MaximumNumberTextField.text!)!)
             viewController.guessesLeft = (Int(NumberOfGuessesTextField.text!)!)
         default:

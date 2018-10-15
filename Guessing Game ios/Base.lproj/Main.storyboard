@@ -92,7 +92,6 @@
         <!--Custom View Controller-->
         <scene sceneID="7i4-Cp-vBm">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bce-Qh-m2j" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="dhr-mt-3Sl" customClass="CustomViewController" customModule="Guessing_Game_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LlD-Te-lar">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -135,7 +134,8 @@
                                         <rect key="frame" x="47.5" y="320" width="77" height="30"/>
                                         <state key="normal" title="Customize "/>
                                         <connections>
-                                            <action selector="CustomizeButtonTapped:" destination="dhr-mt-3Sl" eventType="touchUpInside" id="8RP-V6-Ls6"/>
+                                            <action selector="CustomizeButtonTapped:" destination="dhr-mt-3Sl" eventType="touchUpInside" id="xLW-TD-bGU"/>
+                                            <segue destination="BYZ-38-t0r" kind="show" identifier="CustomizeToGuessingGame" id="V1l-Uy-Qn8"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -156,8 +156,9 @@
                         <outlet property="NumberOfGuessesTextField" destination="hPn-8q-dqC" id="xmL-pA-hNI"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bce-Qh-m2j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-10" y="445"/>
+            <point key="canvasLocation" x="-10" y="444"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -241,6 +242,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="fce-JC-gAZ"/>
+        <segue reference="V1l-Uy-Qn8"/>
     </inferredMetricsTieBreakers>
 </document>
